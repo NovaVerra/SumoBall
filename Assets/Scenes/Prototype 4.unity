@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85e7d84575994feca47e12b8ff8f68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RotationSpeed: 50
 --- !u!4 &229767169
 Transform:
   m_ObjectHideFlags: 0
@@ -579,6 +580,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2854703019560846270, guid: 79e2aa3d6f3b24e4fb0a780afb9e8695,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5788877941261949164, guid: 79e2aa3d6f3b24e4fb0a780afb9e8695,
         type: 3}
       propertyPath: m_Name
