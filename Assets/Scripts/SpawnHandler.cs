@@ -21,7 +21,16 @@ public class SpawnHandler : MonoBehaviour
 	// Update is called once per frame
 	void	Update()
 	{
-		
+		if (GetEnemyCount() == 0)
+		{
+			SpawnEnemyWave(++Level);
+		}
+	}
+
+	int	GetEnemyCount()
+	{
+		int EnemyCount = FindObjectsOfType<Enemy>().Length;
+		return EnemyCount;
 	}
 
 	Vector3	GenerateSpawnPos()
@@ -40,10 +49,9 @@ public class SpawnHandler : MonoBehaviour
 
 	void	SpawnEnemyWave(float NumOfEnemies)
 	{
-		for (int Index = 0; NumOfEnemies < 3; Index++)
+		for (int Index = 0; Index < NumOfEnemies; Index++)
 		{
 			SpawnEnemy();
 		}
-		Level++;
 	}
 }

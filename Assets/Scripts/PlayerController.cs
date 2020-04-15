@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 	bool	b_HasPowerUp = false;
 
 	/** Game Config */
+	[SerializeField] float	PowerupDuration = 7.0f;
 	[SerializeField] GameObject	PowerupIndicator;
 	[SerializeField] float	MoveSpeed = 1000.0f;
 	[SerializeField] float	PowerupStrength = 10.0f;
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
 	IEnumerator	PowerupCountdownRoutine()
 	{
-		yield return new WaitForSeconds(4);
+		yield return new WaitForSeconds(PowerupDuration);
 		b_HasPowerUp = false;
 		PowerupIndicator.SetActive(b_HasPowerUp);
 	}
