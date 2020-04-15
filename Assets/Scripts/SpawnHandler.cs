@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SpawnHandler : MonoBehaviour
 {
+	/** Game Config */
 	[SerializeField] GameObject	Enemy;
 	[SerializeField] Transform	Parent;
 	float	SpawnRange = 9.0f;
+
 	// Start is called before the first frame update
 	void	Start()
 	{
