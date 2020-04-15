@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
 	/** Game Config */
 	[SerializeField] float	MoveSpeed = 1000.0f;
+	[SerializeField] float	PowerupStrength = 10.0f;
 	GameObject	FocalPoint;
 	Rigidbody	RB_Player;
 
@@ -54,6 +55,10 @@ public class PlayerController : MonoBehaviour
 	{
 		if (CollisionObject.gameObject.CompareTag("Enemy") && b_HasPowerUp)
 		{
+			Rigidbody	RB_Enemy = CollisionObject.gameObject.GetComponent<Rigidbody>();
+			Vector3		AwayFromPlayer = CollisionObject.gameObject.transform.position - transform.position;
+
+			RB_Enemy.AddForce(AwayFromPlayer * PowerupStrength, ForceMode.Impulse);
 			Debug.Log("Collided with " + gameObject.name + " with power up set to " + b_HasPowerUp);
 		}
 	}
