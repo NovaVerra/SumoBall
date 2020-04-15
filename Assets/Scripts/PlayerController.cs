@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 	bool	b_HasPowerUp = false;
 
 	/** Game Config */
+	[SerializeField] GameObject	PowerupIndicator;
 	[SerializeField] float	MoveSpeed = 1000.0f;
 	[SerializeField] float	PowerupStrength = 10.0f;
 	GameObject	FocalPoint;
@@ -29,6 +30,12 @@ public class PlayerController : MonoBehaviour
 	void	Update()
 	{
 		InputManager();
+		AttachPowerupToPlayer();
+	}
+
+	void	AttachPowerupToPlayer()
+	{
+		PowerupIndicator.transform.position = gameObject.transform.position + new Vector3(0.0f, -0.5f, 0.0f);
 	}
 
 	void	InputManager()
@@ -47,6 +54,7 @@ public class PlayerController : MonoBehaviour
 		if (TriggerObject.CompareTag("Powerup"))
 		{
 			b_HasPowerUp = true;
+			PowerupIndicator.SetActive(b_HasPowerUp);
 			Destroy(TriggerObject.gameObject);
 			StartCoroutine(PowerupCountdownRoutine());
 		}
@@ -56,6 +64,7 @@ public class PlayerController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(4);
 		b_HasPowerUp = false;
+		PowerupIndicator.SetActive(b_HasPowerUp);
 	}
 
 	void	OnCollisionEnter(Collision CollisionObject)
