@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpawnHandler : MonoBehaviour
 {
+	/** Game State */
+	float	Level = 1;
+
 	/** Game Config */
 	[SerializeField] GameObject	Enemy;
 	[SerializeField] Transform	Parent;
@@ -12,7 +15,7 @@ public class SpawnHandler : MonoBehaviour
 	// Start is called before the first frame update
 	void	Start()
 	{
-		SpawnEnemy();
+		SpawnEnemyWave(Level);
 	}
 
 	// Update is called once per frame
@@ -21,17 +24,26 @@ public class SpawnHandler : MonoBehaviour
 		
 	}
 
-	void	SpawnEnemy()
-	{
-		GameObject	EnemyInstance = Instantiate(Enemy, GenerateSpawnPos(), Quaternion.identity);
-		EnemyInstance.transform.parent = Parent;
-	}
-
 	Vector3	GenerateSpawnPos()
 	{
 		float	X_SpawnPos = Random.Range(-SpawnRange, SpawnRange);
 		float	Z_SpawnPos = Random.Range(-SpawnRange, SpawnRange);
 		Vector3	SpawnPos = new Vector3(X_SpawnPos, 0.0f, Z_SpawnPos);
 		return SpawnPos;
+	}
+
+	void	SpawnEnemy()
+	{
+		GameObject	EnemyInstance = Instantiate(Enemy, GenerateSpawnPos(), Quaternion.identity);
+		EnemyInstance.transform.parent = Parent;
+	}
+
+	void	SpawnEnemyWave(float NumOfEnemies)
+	{
+		for (int Index = 0; NumOfEnemies < 3; Index++)
+		{
+			SpawnEnemy();
+		}
+		Level++;
 	}
 }
