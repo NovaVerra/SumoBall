@@ -9,6 +9,7 @@ public class SpawnHandler : MonoBehaviour
 
 	/** Game Config */
 	[SerializeField] GameObject	Enemy;
+	[SerializeField] GameObject	Powerup;
 	[SerializeField] Transform	Parent;
 	float	SpawnRange = 9.0f;
 
@@ -24,6 +25,7 @@ public class SpawnHandler : MonoBehaviour
 		if (GetEnemyCount() == 0)
 		{
 			SpawnEnemyWave(++Level);
+			SpawnPowerup();
 		}
 	}
 
@@ -53,5 +55,11 @@ public class SpawnHandler : MonoBehaviour
 		{
 			SpawnEnemy();
 		}
+	}
+
+	void	SpawnPowerup()
+	{
+		GameObject	PowerupInstance = Instantiate(Powerup, GenerateSpawnPos(), Quaternion.identity);
+		PowerupInstance.transform.parent = Parent;
 	}
 }
