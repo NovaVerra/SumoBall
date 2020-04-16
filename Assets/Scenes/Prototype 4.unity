@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 8205333904942404831, guid: 351b6c7018ba241928bf7aff6ec64134, type: 3}
+  Powerup: {fileID: 5420860145719710433, guid: 7410014d1a39d4c59890f9f0df7d58f0, type: 3}
   Parent: {fileID: 76134950}
 --- !u!4 &76134950
 Transform:
